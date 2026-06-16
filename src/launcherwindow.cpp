@@ -139,6 +139,9 @@ LauncherWindow::LauncherWindow(QWidget *parent)
     QByteArray patchdefData = patchdefFile.readAll();
     QJsonDocument patchdef = QJsonDocument::fromJson(patchdefData);
     QString version = patchdef.object()["patchVersion"].toString();
+
+    rbApp->patchConfig()->hideDialogueOutlinesOption =
+        patchdef.object()["hideDialogueOutlinesOption"].toBool();
 #endif
 
     ui->versionLabel->setTextFormat(Qt::RichText);

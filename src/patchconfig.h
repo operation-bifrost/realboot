@@ -33,6 +33,7 @@ class PatchConfig : public QObject {
     bool hasAutoSkipHide = false;
     bool hideAutoSkip;
     bool improveDialogueOutlines;
+    bool hideDialogueOutlinesOption = false;
     bool cosplayPatch;
     bool rneMouseControls;
     bool scrollDownToAdvanceText;

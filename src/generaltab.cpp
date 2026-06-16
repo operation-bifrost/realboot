@@ -75,7 +75,11 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent) {
     !defined(GAME_STEINSGATEVSO) && !defined(GAME_ROBOTICSNOTESELITE) &&     \
     !defined(GAME_ROBOTICSNOTESDASH) && !defined(GAME_ANONYMOUSCODE)
     _outlineCb = new QCheckBox("ใช้ฟอนต์แบบมีขอบ (ยังไม่รองรับ)", this);
-    mainLayout->addWidget(_outlineCb);
+    if (rbApp->patchConfig()->hideDialogueOutlinesOption) {
+        _outlineCb->hide();
+    } else {
+        mainLayout->addWidget(_outlineCb);
+    }
 #endif
 
     if (rbApp->patchConfig()->hasrineBlackNames) {
