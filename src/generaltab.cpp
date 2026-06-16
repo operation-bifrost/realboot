@@ -20,7 +20,7 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent) {
     QHBoxLayout *resolutionRow = new QHBoxLayout(this);
     resolutionRow->setSpacing(8);
     resolutionRow->setMargin(0);
-    QLabel *resolutionLabel = new QLabel("Resolution:", this);
+    QLabel *resolutionLabel = new QLabel("ความละเอียด:", this);
     resolutionRow->addWidget(resolutionLabel);
     _resolutionComboBox = new QComboBox(this);
 #if !defined(GAME_CHAOSHEADNOAH)
@@ -37,7 +37,7 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent) {
                                  (int)GameConfig::Resolution::Res1080p);
     resolutionRow->addWidget(_resolutionComboBox);
     resolutionRow->addSpacing(4);
-    _fullscreenCb = new QCheckBox("Fullscreen", this);
+    _fullscreenCb = new QCheckBox("เต็มหน้าจอ", this);
     resolutionRow->addWidget(_fullscreenCb);
     resolutionRow->addStretch(1);
     mainLayout->addLayout(resolutionRow);
@@ -74,7 +74,7 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent) {
 #if !defined(GAME_CHAOSHEADNOAH) && !defined(GAME_STEINSGATEELITE) &&        \
     !defined(GAME_STEINSGATEVSO) && !defined(GAME_ROBOTICSNOTESELITE) &&     \
     !defined(GAME_ROBOTICSNOTESDASH) && !defined(GAME_ANONYMOUSCODE)
-    _outlineCb = new QCheckBox("Improve dialogue outlines", this);
+    _outlineCb = new QCheckBox("ใช้ฟอนต์แบบมีขอบ (ยังไม่รองรับ)", this);
     mainLayout->addWidget(_outlineCb);
 #endif
 
@@ -98,7 +98,7 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent) {
 
 #if !defined(GAME_STEINSGATEVSO) && !defined(GAME_ANONYMOUSCODE)
     QLabel *fmvLabel = new QLabel(this);
-    fmvLabel->setText("<b>Videos</b>");
+    fmvLabel->setText("<b>วิดีโอ</b>");
     mainLayout->addWidget(fmvLabel);
 #endif
 
@@ -109,14 +109,14 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent) {
     QHBoxLayout *movieQualityRow = new QHBoxLayout(this);
     movieQualityRow->setSpacing(8);
     movieQualityRow->setMargin(0);
-    QLabel *movieQualityLabel = new QLabel("Quality:", this);
+    QLabel *movieQualityLabel = new QLabel("คุณภาพ:", this);
     movieQualityRow->addWidget(movieQualityLabel);
     _movieQualityGroup = new QButtonGroup(this);
-    QRadioButton *qualityLowButton = new QRadioButton("Low (720p)", this);
+    QRadioButton *qualityLowButton = new QRadioButton("ต่ำ (720p)", this);
     _movieQualityGroup->addButton(qualityLowButton,
                                   (int)GameConfig::MovieQuality::Low720p);
     movieQualityRow->addWidget(qualityLowButton);
-    QRadioButton *qualityHighButton = new QRadioButton("High (1080p)", this);
+    QRadioButton *qualityHighButton = new QRadioButton("สูง (1080p)", this);
     _movieQualityGroup->addButton(qualityHighButton,
                                   (int)GameConfig::MovieQuality::High1080p);
     movieQualityRow->addWidget(qualityHighButton);
@@ -128,15 +128,15 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent) {
     QHBoxLayout *songSubsRow = new QHBoxLayout(this);
     songSubsRow->setSpacing(8);
     songSubsRow->setMargin(0);
-    QLabel *songSubsLabel = new QLabel("Song subtitles:", this);
+    QLabel *songSubsLabel = new QLabel("ซับไตเติลเพลง:", this);
     songSubsRow->addWidget(songSubsLabel);
     _songSubsComboBox = new QComboBox(this);
-    _songSubsComboBox->addItem("Off", (int)PatchConfig::SongSubs::Off);
-    _songSubsComboBox->addItem("Karaoke + translation",
+    _songSubsComboBox->addItem("ปิด", (int)PatchConfig::SongSubs::Off);
+    _songSubsComboBox->addItem("คาราโอเกะ + คำแปล",
                                (int)PatchConfig::SongSubs::All);
-    _songSubsComboBox->addItem("Karaoke only",
+    _songSubsComboBox->addItem("เฉพาะคาราโอเกะ",
                                (int)PatchConfig::SongSubs::KaraOnly);
-    _songSubsComboBox->addItem("Translation only",
+    _songSubsComboBox->addItem("เฉพาะคำแปล",
                                (int)PatchConfig::SongSubs::TLOnly);
     songSubsRow->addWidget(_songSubsComboBox);
     songSubsRow->addStretch(1);
@@ -146,15 +146,15 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent) {
 #if !defined(GAME_CHAOSHEADNOAH) && !defined(GAME_STEINSGATEELITE) &&        \
     !defined(GAME_STEINSGATEVSO) && !defined(GAME_ROBOTICSNOTESELITE) &&     \
     !defined(GAME_ROBOTICSNOTESDASH) && !defined(GAME_ANONYMOUSCODE)
-    _hqAudioCb = new QCheckBox("Use high-quality audio tracks for OP/ED", this);
+    _hqAudioCb = new QCheckBox("ใช้ไฟล์เสียงคุณภาพสูงสำหรับ OP/ED", this);
     mainLayout->addWidget(_hqAudioCb);
 #endif
 
     mainLayout->addStretch(1);
 #if defined(GAME_STEINSGATE)
     _cosplayPatch = new QCheckBox(
-        "Enable Cosplay Patch\n(Mayuri's Tutturu beam has been fired?! Its "
-        "effect forces everyone to cosplay!)",
+        "เล่นด้วยแพทช์คอสเพลย์\n(ลำแสงตื้ดตื่อรื้อของมายูริยิงออกมางั้นเหรอ?!ทุกคน"
+        "ถูกพลังบังคับให้แต่งคอสเพลย์\nซะงั้น!)",
         this);
     mainLayout->addWidget(_cosplayPatch);
 #endif

@@ -4,7 +4,7 @@
 #include <cstdint>
 #include "Windows.h"
 
-const QString game_TechSupportUrl = "https://discord.gg/rq4GGCh";
+const QString game_TechSupportUrl = "https://discord.gg/vZurW6rzg3";
 
 #if defined(GAME_CHAOSHEADNOAH)
 const uint8_t game_ExtraControllerData[] = {
@@ -40,7 +40,7 @@ const uint8_t game_ExtraControllerData[] = {
 const QString game_Custom1ButtonLabel = "Phone trigger / Zoom in";
 const QString game_Custom2ButtonLabel = "Phone trigger / Zoom out";
 const QString game_ReleaseUrl =
-    "https://github.com/CommitteeOfZero/sghd-patch/releases";
+    "https://github.com/ModzabazeR/OperationBifrost/releases";
 #if defined(GAME_STEAM)
 const QString game_LauncherTitle =
     "STEINS;GATE Improvement Patch (Steam) Launcher";

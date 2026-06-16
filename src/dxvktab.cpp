@@ -28,9 +28,9 @@ DxvkTab::DxvkTab(QWidget *parent) : QWidget(parent) {
     mainLayout->addSpacing(8);
 
     QLabel *enableDxvkLabel = new QLabel(this);
-    enableDxvkLabel->setText("<b>Common graphic errors resolution:</b>");
+    enableDxvkLabel->setText("<b>การแก้ปัญหากราฟิกเบื้องต้น:</b>");
     mainLayout->addWidget(enableDxvkLabel);
-    _enableDxvkCb = new QCheckBox("Enable DXVK", this);
+    _enableDxvkCb = new QCheckBox("เปิดใช้งาน DXVK", this);
     mainLayout->addWidget(_enableDxvkCb);
     mainLayout->addStretch(1);
 

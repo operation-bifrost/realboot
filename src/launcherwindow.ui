@@ -121,7 +121,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Start Game</string>
+            <string>เริ่มเกม</string>
            </property>
            <property name="primaryButton" stdset="0">
             <bool>true</bool>
@@ -176,7 +176,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Restore defaults</string>
+             <string>คืนค่าเริ่มต้น</string>
             </property>
            </widget>
           </item>
@@ -213,7 +213,7 @@
          <item>
           <widget class="QLabel" name="versionLabel">
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/CommitteeOfZero/cc-patch/releases&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline; color:#ffffff;&quot;&gt;Version:&lt;/span&gt;&lt;/a&gt; QA1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/CommitteeOfZero/cc-patch/releases&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline; color:#ffffff;&quot;&gt;เวอร์ชัน:&lt;/span&gt;&lt;/a&gt; QA1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>

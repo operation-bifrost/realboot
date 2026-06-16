@@ -20,7 +20,7 @@ MiniSettingsWidget::MiniSettingsWidget(QWidget *parent) : QWidget(parent) {
     resolutionRow->setSpacing(8);
     resolutionRow->setMargin(0);
     resolutionRow->addStretch(1);
-    QLabel *resolutionLabel = new QLabel("Resolution:", this);
+    QLabel *resolutionLabel = new QLabel("ความละเอียด:", this);
     resolutionRow->addWidget(resolutionLabel);
     _resolutionComboBox = new QComboBox(this);
 #if !defined(GAME_CHAOSHEADNOAH)
@@ -37,7 +37,7 @@ MiniSettingsWidget::MiniSettingsWidget(QWidget *parent) : QWidget(parent) {
                                  (int)GameConfig::Resolution::Res1080p);
     resolutionRow->addWidget(_resolutionComboBox);
     resolutionRow->addSpacing(4);
-    _fullscreenCb = new QCheckBox("Fullscreen", this);
+    _fullscreenCb = new QCheckBox("เต็มหน้าจอ", this);
     resolutionRow->addWidget(_fullscreenCb);
     resolutionRow->addStretch(1);
     mainLayout->addLayout(resolutionRow);
@@ -68,14 +68,14 @@ MiniSettingsWidget::MiniSettingsWidget(QWidget *parent) : QWidget(parent) {
     movieQualityRow->setSpacing(8);
     movieQualityRow->setMargin(0);
     movieQualityRow->addStretch(1);
-    QLabel *movieQualityLabel = new QLabel("Video Quality:", this);
+    QLabel *movieQualityLabel = new QLabel("คุณภาพวิดีโอ:", this);
     movieQualityRow->addWidget(movieQualityLabel);
     _movieQualityGroup = new QButtonGroup(this);
-    QRadioButton *qualityLowButton = new QRadioButton("Low (720p)", this);
+    QRadioButton *qualityLowButton = new QRadioButton("ต่ำ (720p)", this);
     _movieQualityGroup->addButton(qualityLowButton,
                                   (int)GameConfig::MovieQuality::Low720p);
     movieQualityRow->addWidget(qualityLowButton);
-    QRadioButton *qualityHighButton = new QRadioButton("High (1080p)", this);
+    QRadioButton *qualityHighButton = new QRadioButton("สูง (1080p)", this);
     _movieQualityGroup->addButton(qualityHighButton,
                                   (int)GameConfig::MovieQuality::High1080p);
     movieQualityRow->addWidget(qualityHighButton);

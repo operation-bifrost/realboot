@@ -8,6 +8,7 @@
 #include <QTextStream>
 #include <QStyleFactory>
 #include <QDir>
+#include <QFont>
 #include "Windows.h"
 #include "Shlobj.h"
 

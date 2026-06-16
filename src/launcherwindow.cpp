@@ -123,7 +123,7 @@ LauncherWindow::LauncherWindow(QWidget *parent)
     ui->techSupportLabel->setOpenExternalLinks(true);
     ui->techSupportLabel->setText(
         QString("<a href='%1'><span style='font-weight: 600; text-decoration: "
-                "underline; color: #fff'>Technical Support</span></a>")
+                "underline; color: #fff'>ปรึกษาปัญหา</span></a>")
             .arg(game_TechSupportUrl));
 #if defined(GAME_STEINSGATEVSO)
     QString version = "1.0.0";
@@ -145,21 +145,21 @@ LauncherWindow::LauncherWindow(QWidget *parent)
     ui->versionLabel->setOpenExternalLinks(true);
     ui->versionLabel->setText(
         QString("<a href='%1'><span style='font-weight: 600; text-decoration: "
-                "underline; color: #fff'>Version:</span></a> %2")
+                "underline; color: #fff'>เวอร์ชัน:</span></a> %2")
             .arg(game_ReleaseUrl, version));
 
 #if !defined(GAME_STEINSGATEVSO)
     _generalTab = new GeneralTab(this);
-    ui->tabWidget->addTab(_generalTab, "General");
+    ui->tabWidget->addTab(_generalTab, "ทั่วไป");
 #endif
 #if !defined(GAME_CHAOSHEADNOAH) && !defined(GAME_STEINSGATEELITE) &&        \
     !defined(GAME_STEINSGATEVSO) && !defined(GAME_ROBOTICSNOTESELITE) &&     \
     !defined(GAME_ROBOTICSNOTESDASH) && !defined(GAME_ANONYMOUSCODE)
     _controllerTab = new ControllerTab(this);
-    ui->tabWidget->addTab(_controllerTab, "Controller");
+    ui->tabWidget->addTab(_controllerTab, "คอนโทรลเลอร์");
 #endif
     _troubleshootingTab = new TroubleshootingTab(this);
-    ui->tabWidget->addTab(_troubleshootingTab, "Troubleshooting");
+    ui->tabWidget->addTab(_troubleshootingTab, "แก้ปัญหา");
 #if !defined(GAME_STEINSGATEVSO) && !defined(GAME_CHAOSHEADNOAH)
     _dxvkTab = new DxvkTab(this);
     ui->tabWidget->addTab(_dxvkTab, "DXVK");
@@ -410,7 +410,7 @@ void LauncherWindow::showMiniLayout() {
                                      QSizePolicy::Expanding);
     ui->miniBottomSpacer->invalidate();
 
-    ui->toggleSettingsButton->setText("More Settings");
+    ui->toggleSettingsButton->setText("ตั้งค่าขั้นสูง");
 
     setFixedSize(500, 320);
     adjustSize();
@@ -424,7 +424,7 @@ void LauncherWindow::showFullLayout() {
                                      QSizePolicy::Fixed);
     ui->miniBottomSpacer->invalidate();
 
-    ui->toggleSettingsButton->setText("Less Settings");
+    ui->toggleSettingsButton->setText("ตั้งค่าขั้นเริ่มต้น");
 
     setFixedSize(500, 600);
     adjustSize();
@@ -451,27 +451,27 @@ void LauncherWindow::startUpdateCheck() {
     QFile versioninfoFile("languagebarrier/versioninfo.json");
 #endif
     if (!versioninfoFile.open(QIODevice::ReadOnly)) {
-        updateCheckFailed("Couldn't open update info");
+        updateCheckFailed("ไม่สามารถอ่านไฟล์อัปเดตได้");
         return;
     }
     QByteArray versioninfoData = versioninfoFile.readAll();
     QJsonDocument versioninfo = QJsonDocument::fromJson(versioninfoData);
     if (versioninfo.isNull()) {
-        updateCheckFailed("Couldn't parse update info");
+        updateCheckFailed("ไม่สามารถพาร์สไฟล์อัปเดตได้");
         return;
     }
     QJsonObject const &obj = versioninfo.object();
     if (obj["intVersion"].type() != QJsonValue::Double ||
         obj["channel"].type() != QJsonValue::String ||
         obj["updateCheckUrl"].type() != QJsonValue::String) {
-        updateCheckFailed("Update info is missing required data");
+        updateCheckFailed("ไฟล์อัปเดตมีข้อมูลไม่ครบ");
         return;
     }
     _runningIntVersion = obj["intVersion"].toInt();
     _updateChannel = obj["channel"].toString();
     QString updateCheckUrl = obj["updateCheckUrl"].toString();
 
-    ui->updateCheckLabel->setText("(checking for updates...)");
+    ui->updateCheckLabel->setText("(กำลังตรวจสอบเวอร์ชัน...)");
 
     QFutureWatcher<UpdateCheckReply> *watcher =
         new QFutureWatcher<UpdateCheckReply>(this);
@@ -507,50 +507,50 @@ void LauncherWindow::startUpdateCheck() {
 }
 
 void LauncherWindow::updateCheckFailed(const QString &error) {
-    if (!error.isEmpty()) QMessageBox::critical(this, "Launcher error", error);
-    ui->updateCheckLabel->setText("(update check failed)");
+    if (!error.isEmpty()) QMessageBox::critical(this, "เกิดข้อผิดพลาด", error);
+    ui->updateCheckLabel->setText("(ตรวจสอบเวอร์ชันล้มเหลว)");
 }
 
 void LauncherWindow::updateCheckReplyReceived(const UpdateCheckReply &reply) {
     if (reply.responseCode != CURLE_OK) {
-        updateCheckFailed(QString("Update check request error: %1")
+        updateCheckFailed(QString("ข้อผิดพลาดตรวจสอบเวอร์ชัน: %1")
                               .arg(QString(reply.responseBody)));
         return;
     }
     QJsonDocument update = QJsonDocument::fromJson(reply.responseBody);
     if (!update.isObject()) {
         updateCheckFailed(
-            "Update check got malformed response (not a JSON object)");
+            "การตรวจสอบเวอร์ชันได้รับข้อมูลผิดปกติ (ไม่ใช่ JSON object)");
         return;
     }
     const QJsonObject &obj = update.object();
     if (obj["channels"].type() != QJsonValue::Object ||
         obj["channels"].toObject()[_updateChannel].type() !=
             QJsonValue::Object) {
-        updateCheckFailed("Update check failed (no such channel)");
+        updateCheckFailed("ตรวจสอบเวอร์ชันล้มเหลว (ไม่มีแชนเนล)");
         return;
     }
     const QJsonObject &channel =
         update.object()["channels"].toObject()[_updateChannel].toObject();
     if (channel["intVersion"].type() != QJsonValue::Double) {
         updateCheckFailed(
-            "Update check got malformed response (version is not a number)");
+            "การตรวจสอบเวอร์ชันได้รับข้อมูลผิดปกติ (เวอร์ชันไม่ใช่ตัวเลข)");
         return;
     } else {
         int latestVersion = channel["intVersion"].toInt();
         if (latestVersion > _runningIntVersion) {
-            ui->updateCheckLabel->setText("(update available!)");
+            ui->updateCheckLabel->setText("(อัปเดตได้นะ!)");
             QMessageBox::StandardButton reply = QMessageBox::question(
-                this, "New version available",
-                "A newer version of the patch is available.\n"
-                "Close launcher and open download page?",
+                this, "เวอร์ชันใหม่พร้อมให้โหลดแล้ว",
+                "แพทช์เวอร์ชันใหม่พร้อมให้โหลดแล้ว\n"
+                "ต้องการปิดโปรแกรมแล้วไปอัปเดตหรือไม่?",
                 QMessageBox::Yes | QMessageBox::No);
             if (reply == QMessageBox::Yes) {
                 QDesktopServices::openUrl(QUrl(game_ReleaseUrl));
                 cancelRequested();
             }
         } else {
-            ui->updateCheckLabel->setText("(latest version)");
+            ui->updateCheckLabel->setText("(เวอร์ชันล่าสุดแล้ว)");
         }
     }
 }

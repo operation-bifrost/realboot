@@ -28,14 +28,14 @@ TroubleshootingTab::TroubleshootingTab(QWidget *parent) : QWidget(parent) {
     mainLayout->addSpacing(12);
 
     QPushButton *openGameFolderButton =
-        new QPushButton("Open game installation folder", this);
+        new QPushButton("เปิดโฟลเดอร์เกม", this);
     openGameFolderButton->setFixedWidth(350);
     connect(openGameFolderButton, &QPushButton::clicked,
             []() { QDesktopServices::openUrl(QUrl::fromLocalFile(".")); });
     mainLayout->addWidget(openGameFolderButton);
     mainLayout->setAlignment(openGameFolderButton, Qt::AlignHCenter);
     QPushButton *openSaveFolderButton =
-        new QPushButton("Open game save folder", this);
+        new QPushButton("เปิดโฟลเดอร์เซฟเกม", this);
     openSaveFolderButton->setFixedWidth(350);
     connect(openSaveFolderButton, &QPushButton::clicked, []() {
         QDesktopServices::openUrl(
@@ -44,7 +44,7 @@ TroubleshootingTab::TroubleshootingTab(QWidget *parent) : QWidget(parent) {
     mainLayout->addWidget(openSaveFolderButton);
     mainLayout->setAlignment(openSaveFolderButton, Qt::AlignHCenter);
     QPushButton *openPatchConfigFolderButton =
-        new QPushButton("Open patch config folder", this);
+        new QPushButton("เปิดโฟลเดอร์การตั้งค่าแพทช์", this);
     openPatchConfigFolderButton->setFixedWidth(350);
     connect(openPatchConfigFolderButton, &QPushButton::clicked, []() {
         QDesktopServices::openUrl(
@@ -58,7 +58,7 @@ TroubleshootingTab::TroubleshootingTab(QWidget *parent) : QWidget(parent) {
     _infoTe = new QPlainTextEdit(this);
 
     QPushButton *copyInfoButton =
-        new QPushButton("Copy below info to clipboard", this);
+        new QPushButton("คัดลอกข้อมูลด้านล่างลงคลิปบอร์ด", this);
     copyInfoButton->setFixedWidth(230);
     connect(copyInfoButton, &QPushButton::clicked, this,
             &TroubleshootingTab::copyInfo);

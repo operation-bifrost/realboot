@@ -15,15 +15,15 @@
 #include <QMetaEnum>
 
 QMap<ControllerConfig::Bind, QString> bindLabelTexts{
-    {ControllerConfig::Bind::Enter, "Enter / Send message"},
-    {ControllerConfig::Bind::Cancel, "Cancel / Hide text"},
-    {ControllerConfig::Bind::AutoMode, "Auto mode"},
-    {ControllerConfig::Bind::Skip, "Skip / Turn page (Right)"},
-    {ControllerConfig::Bind::SystemMenu, "System menu"},
-    {ControllerConfig::Bind::Tips, "TIPS"},
-    {ControllerConfig::Bind::ForceSkip, "Force skip / Turn page (Left)"},
-    {ControllerConfig::Bind::Backlog, "Backlog"},
-    {ControllerConfig::Bind::QuickSave, "Quick save"},
+    {ControllerConfig::Bind::Enter, "ยืนยัน / ข้อความ"},
+    {ControllerConfig::Bind::Cancel, "กลับ / ซ่อนข้อความ"},
+    {ControllerConfig::Bind::AutoMode, "เล่นอัตโนมัติ"},
+    {ControllerConfig::Bind::Skip, "ข้ามบทสนทนา / เปลี่ยนหน้า (ขวา)"},
+    {ControllerConfig::Bind::SystemMenu, "เปิดเมนู"},
+    {ControllerConfig::Bind::Tips, "สารานุกรม"},
+    {ControllerConfig::Bind::ForceSkip, "บังคับข้ามบทสนทนา / เปลี่ยนหน้า (ซ้าย)"},
+    {ControllerConfig::Bind::Backlog, "ย้อนความ"},
+    {ControllerConfig::Bind::QuickSave, "เซฟแบบด่วน"},
     {ControllerConfig::Bind::Custom1, game_Custom1ButtonLabel},
     {ControllerConfig::Bind::Custom2, game_Custom2ButtonLabel}};
 
@@ -49,14 +49,14 @@ ControllerTab::ControllerTab(QWidget *parent) : QWidget(parent) {
     controllerRow->setMargin(0);
     controllerRow->setAlignment(Qt::AlignVCenter);
 
-    _controllerCb = new QCheckBox("Enabled", this);
+    _controllerCb = new QCheckBox("เปิด", this);
     controllerRow->addWidget(_controllerCb);
 
     controllerRow->addStretch(1);
-    QLabel *controllerLabel = new QLabel("Controller:", this);
+    QLabel *controllerLabel = new QLabel("คอนโทรลเลอร์:", this);
     controllerRow->addWidget(controllerLabel);
     if (rbApp->controllerManager()->controllers().empty()) {
-        QLabel *noControllersLabel = new QLabel("No controllers found.", this);
+        QLabel *noControllersLabel = new QLabel("ไม่พบคอนโทรลเลอร์", this);
         controllerRow->addWidget(noControllersLabel);
     } else {
         _controllerBox = new QComboBox(this);
