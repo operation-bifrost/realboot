@@ -426,8 +426,15 @@ void LauncherWindow::showFullLayout() {
 
     ui->toggleSettingsButton->setText("ตั้งค่าขั้นเริ่มต้น");
 
-    setFixedSize(500, 600);
+    // The original fixed 500x600 was tuned for the kofuna 13px base. The 15px
+    // Prompt font makes the tabbed content taller, so keep the width at 500
+    // (long labels wrap to fit) and derive the height from the content to
+    // avoid clipping the bottom of the general tab.
+    setFixedWidth(500);
+    setMinimumHeight(0);
+    setMaximumHeight(QWIDGETSIZE_MAX);
     adjustSize();
+    setFixedHeight(height());
 }
 
 void LauncherWindow::toggleSettings() {

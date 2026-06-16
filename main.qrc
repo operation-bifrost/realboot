@@ -6,5 +6,7 @@
         <file>assets/realboot.qss</file>
         <file>assets/settings_button.png</file>
         <file>assets/reset_button.png</file>
+        <file>assets/Prompt-Regular.ttf</file>
+        <file>assets/Prompt-Bold.ttf</file>
     </qresource>
 </RCC>

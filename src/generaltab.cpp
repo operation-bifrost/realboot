@@ -153,8 +153,8 @@ GeneralTab::GeneralTab(QWidget *parent) : QWidget(parent) {
     mainLayout->addStretch(1);
 #if defined(GAME_STEINSGATE)
     _cosplayPatch = new QCheckBox(
-        "เล่นด้วยแพทช์คอสเพลย์\n(ลำแสงตื้ดตื่อรื้อของมายูริยิงออกมางั้นเหรอ?!ทุกคน"
-        "ถูกพลังบังคับให้แต่งคอสเพลย์\nซะงั้น!)",
+        "เล่นด้วยแพทช์คอสเพลย์\n(ลำแสงตื้ดตื่อรื้อของมายูริยิงออกมางั้นเหรอ?!"
+        "ทุกคนถูกพลังบังคับ\nให้แต่งคอสเพลย์ซะงั้น!)",
         this);
     mainLayout->addWidget(_cosplayPatch);
 #endif
